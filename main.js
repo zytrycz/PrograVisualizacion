@@ -1,8 +1,14 @@
 const d3 = require("d3-fetch");
 global.fetch = require("node-fetch");
+
+
 function readData(fileName){
-    var array = d3.csv("data.csv");
-    console.log("HI");
+    var cantones = [];
+    d3.csv("http://127.0.0.1:8887/data.csv", function(data){
+        cantones.push(data);
+    });
+    /* TODO:
+    * Save the json objs in th e.json file*/
 }
 
 function main(){
