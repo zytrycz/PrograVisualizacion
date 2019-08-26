@@ -3,11 +3,19 @@ global.fetch = require("node-fetch");
 
 
 function readData(fileName){
-    var cantones = [];
-    d3.csv("http://127.0.0.1:8887/data.csv", function(data){
-        cantones.push(data);
-    });
+    var cantones;
+    cantones = d3.csv("http://127.0.0.1:8887/data.csv").then(function(data) {
+        data.forEach(function(d) {
+            d.poblacion = +d.poblacion;
+            d.natalidad = +d.natalidad;
+            d.mortalidad = +d.mortalidad;
+            d.nupcialidad = +d.nupcialidad;
+        });
+      });
+      console.log(cantones);
+
     /* TODO:
+    
     * Save the json objs in th e.json file*/
 }
 
