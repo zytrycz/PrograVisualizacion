@@ -1,22 +1,18 @@
 const d3 = require("d3-fetch");
 global.fetch = require("node-fetch");
-
+var datos = [];
 
 function readData(fileName){
-    var cantones;
-    cantones = d3.csv("http://127.0.0.1:8887/data.csv").then(function(data) {
+    d3.csv("http://127.0.0.1:8887/data.csv").then(function(data) {
         data.forEach(function(d) {
             d.poblacion = +d.poblacion;
             d.natalidad = +d.natalidad;
             d.mortalidad = +d.mortalidad;
             d.nupcialidad = +d.nupcialidad;
         });
+        
       });
-      console.log(cantones);
-
-    /* TODO:
-    
-    * Save the json objs in th e.json file*/
+      console.log(datos);
 }
 
 function main(){
